@@ -16,8 +16,6 @@ int WINAPI wWinMain(HINSTANCE hIns, HINSTANCE hPrevIns, LPSTR pCmdLine, int nCmd
         Data = ClipBoardOutText();
         if (*Data != 0)
         {
-            
-            //*NewData = " ";
             while (*Data != '\0')
             {
                 switch (*Data)
