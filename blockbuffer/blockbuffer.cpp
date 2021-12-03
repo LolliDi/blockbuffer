@@ -7,8 +7,6 @@ int ClipBoardInpText(LPWSTR buf);
 int WINAPI wWinMain(HINSTANCE hIns, HINSTANCE hPrevIns, LPSTR pCmdLine, int nCmdShow)
 {
     LPWSTR Data;
-    TCHAR Alert[] = L"Вы нарушили что-то, скопировав текст:";
-    TCHAR third[10240];
     LPWSTR NewData = calloc(sizeof(WCHAR), 40960);
     LPWSTR NnData = calloc(sizeof(WCHAR), 40960);
     while (TRUE)
@@ -57,15 +55,12 @@ int WINAPI wWinMain(HINSTANCE hIns, HINSTANCE hPrevIns, LPSTR pCmdLine, int nCmd
                 Data++;
                 NewData = NnData;
             }
-
-            swprintf(third, sizeof third, L"%s %s", Alert, NewData);
-            MessageBox(NULL, third, L"Внимание!", MB_OK);
-            ClipBoardInpText("");
+            ClipBoardInpText(NewData);
             Data = NULL;
             *NewData = '\0';
             *NnData = '\0';
         }
-        Sleep(1000);
+        Sleep(300);
     }
 }
 TCHAR* ClipBoardOutText()
